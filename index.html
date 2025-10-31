@@ -85,17 +85,21 @@
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full font-sans">
-  <main class="min-h-full gradient-bg"><!-- Header -->
-   <header class="container mx-auto px-6 py-8">
-    <div class="text-center"><!-- Oferta Especial -->
-     <div class="bg-red-600 text-white py-3 px-4 rounded-full inline-block mb-6 animate-pulse">
-      <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4"><span class="text-xs md:text-base font-bold text-center">🔥 OFERTA RELÂMPAGO - 80% OFF</span>
-       <div class="flex items-center space-x-2">
-        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-        </svg><span id="timer" class="font-mono text-lg md:text-xl font-bold">15:00</span>
-       </div>
+  <main class="min-h-full gradient-bg"><!-- Timer Fixo no Topo -->
+   <div class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-red-600 to-red-500 text-white py-2 px-4 shadow-lg">
+    <div class="container mx-auto flex items-center justify-center space-x-4">
+     <div class="flex items-center space-x-2"><span class="text-yellow-400 text-sm">🔥</span> <span class="text-xs md:text-sm font-bold">OFERTA 80% OFF</span>
+     </div>
+     <div class="flex items-center space-x-1"><span class="text-xs text-yellow-300">Termina em:</span>
+      <div class="bg-black/30 rounded px-2 py-1"><span id="minutes" class="font-mono text-sm font-bold text-yellow-400">15</span> <span class="text-xs text-white/80">m</span>
+      </div><span class="text-white">:</span>
+      <div class="bg-black/30 rounded px-2 py-1"><span id="seconds" class="font-mono text-sm font-bold text-yellow-400">00</span> <span class="text-xs text-white/80">s</span>
       </div>
      </div>
+    </div>
+   </div><!-- Header -->
+   <header class="container mx-auto px-6 py-8 pt-20">
+    <div class="text-center">
      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"><span class="block shadow-text">MANICURE</span> <span class="block text-yellow-400 shadow-text">PROFISSIONAL</span> <span class="block text-3xl md:text-4xl font-normal text-cyan-300 shadow-text">Certificação Completa</span></h1>
      <p class="text-lg md:text-xl text-purple-100 mb-2 text-center">🎯 Domine técnicas avançadas de nail art e empreendedorismo</p>
      <p class="text-base md:text-lg text-purple-100 mb-8 text-center">✨ Saia do zero e construa uma carreira de sucesso no mercado da beleza</p><!-- Preços -->
@@ -107,6 +111,11 @@
         </div>
        </div>
        <p class="text-xs text-green-300 mt-2">💳 Ou 12x de R$ 9,70 sem juros</p>
+      </div><!-- CTA Button -->
+      <div class="mt-6"><button onclick="window.open('https://kiwify.app/Id6QFcn?afid=822s7lg6', '_blank')" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-base md:text-lg px-6 py-3 md:py-4 rounded-full transition-all duration-300 shadow-lg transform hover:scale-105 flex items-center justify-center">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg> GARANTIR MINHA VAGA </button>
+       <p class="text-xs text-center text-purple-200 mt-2">🔒 Compra 100% segura • Acesso imediato</p>
       </div>
      </div>
     </div>
@@ -412,10 +421,26 @@
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            const timerElement = document.getElementById('timer');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
             
-            if (timerElement) {
-                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (minutesElement) {
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+            }
+            
+            if (secondsElement) {
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            // Add urgency effects when time is running low
+            if (timeLeft <= 300) { // Last 5 minutes
+                if (minutesElement) minutesElement.classList.add('text-red-400', 'animate-pulse');
+                if (secondsElement) secondsElement.classList.add('text-red-400', 'animate-pulse');
+            }
+            
+            if (timeLeft <= 60) { // Last minute
+                if (minutesElement) minutesElement.classList.add('animate-bounce');
+                if (secondsElement) secondsElement.classList.add('animate-bounce');
             }
             
             if (timeLeft > 0) {
@@ -423,6 +448,15 @@
             } else {
                 // Timer expired - reset to 15 minutes
                 timeLeft = 15 * 60;
+                // Remove urgency classes
+                if (minutesElement) {
+                    minutesElement.classList.remove('text-red-400', 'animate-pulse', 'animate-bounce');
+                    minutesElement.classList.add('text-yellow-400');
+                }
+                if (secondsElement) {
+                    secondsElement.classList.remove('text-red-400', 'animate-pulse', 'animate-bounce');
+                    secondsElement.classList.add('text-yellow-400');
+                }
             }
         }
 
@@ -459,5 +493,5 @@
             }, 2000);
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9959879b558be1ab',t:'MTc2MTY0NTAzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997250b2e1e2f1ce',t:'MTc2MTkwNDkyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
