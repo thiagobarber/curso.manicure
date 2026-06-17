@@ -1,404 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Designer Profissional - Descubra Seu Potencial</title>
+    <style>
+        :root {
+            --primary: #d4a373;
+            --secondary: #e9edc9;
+            --pink-dark: #b85c7c;
+            --pink-light: #f7e1e9;
+            --text-color: #333;
+            --white: #fff;
+        }
 
-<title>Curso Nail Designer Funciona? Veja Nossa Avaliação Completa</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        body {
+            background-color: #faf6f7;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-<style>
+        header {
+            background: linear-gradient(135deg, #fbc5d8, #ef7da5);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
 
-body{
-background:#faf7f8;
-color:#222;
-overflow-x:hidden;
-}
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-}
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
 
-.hero{
-background:linear-gradient(135deg,#ff4da6,#ff8cc9);
-color:white;
-padding:80px 0;
-}
+        /* Estilos do Quiz */
+        .quiz-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0d5df;
+        }
 
-.hero-content{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-align-items:center;
-}
+        .question {
+            display: none;
+        }
 
-.badge{
-display:inline-block;
-padding:8px 15px;
-background:rgba(255,255,255,.2);
-border-radius:30px;
-margin-bottom:20px;
-font-size:14px;
-}
+        .question.active {
+            display: block;
+        }
 
-.hero h1{
-font-size:52px;
-line-height:1.1;
-margin-bottom:20px;
-}
+        .question h2 {
+            font-size: 1.4rem;
+            color: var(--pink-dark);
+            margin-bottom: 20px;
+        }
 
-.hero p{
-font-size:20px;
-opacity:.95;
-margin-bottom:30px;
-}
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.btn{
-display:inline-block;
-padding:18px 35px;
-background:white;
-color:#ff4da6;
-font-weight:700;
-text-decoration:none;
-border-radius:50px;
-transition:.3s;
-}
+        .option-btn {
+            background-color: #fff;
+            border: 2px solid #e2b6c5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
 
-.btn:hover{
-transform:translateY(-3px);
-}
+        .option-btn:hover {
+            background-color: var(--pink-light);
+            border-color: var(--pink-dark);
+            transform: translateX(5px);
+        }
 
-.hero img{
-width:100%;
-border-radius:25px;
-box-shadow:0 20px 50px rgba(0,0,0,.2);
-}
+        /* Tela de Resultado e CTA */
+        #result-section {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
-.section{
-padding:80px 0;
-}
+        #result-section h2 {
+            color: var(--pink-dark);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
 
-.title{
-text-align:center;
-font-size:40px;
-margin-bottom:20px;
-}
+        .cta-box {
+            background: linear-gradient(135deg, #fff5f8, #ffe3ee);
+            border: 2px dashed var(--pink-dark);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
 
-.subtitle{
-text-align:center;
-color:#666;
-max-width:700px;
-margin:auto;
-margin-bottom:50px;
-}
+        .btn-purchase {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+        .btn-purchase:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.6);
+        }
 
-.card{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
+        /* Benefícios do Curso */
+        .benefits {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-.card h3{
-margin-bottom:10px;
-}
+        @media (max-width: 600px) {
+            .benefits { grid-template-columns: 1fr; }
+            header h1 { font-size: 2rem; }
+        }
 
-.review-box{
-background:white;
-padding:40px;
-border-radius:25px;
-box-shadow:0 10px 40px rgba(0,0,0,.05);
-}
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--pink-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
 
-.score{
-font-size:60px;
-font-weight:800;
-color:#ff4da6;
-}
+        .benefit-card h3 {
+            color: var(--pink-dark);
+            margin-bottom: 8px;
+        }
 
-.grid-2{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
 
-.list{
-list-style:none;
-}
-
-.list li{
-margin-bottom:15px;
-font-size:17px;
-}
-
-.list li::before{
-content:"✔ ";
-color:#ff4da6;
-font-weight:bold;
-}
-
-.testimonials{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
-
-.testimonial{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-.cta{
-background:linear-gradient(135deg,#ff4da6,#ff8cc9);
-padding:80px 0;
-text-align:center;
-color:white;
-}
-
-.cta h2{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.footer{
-padding:30px;
-text-align:center;
-font-size:13px;
-color:#777;
-}
-
-@media(max-width:900px){
-
-.hero-content,
-.grid-2{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:38px;
-}
-
-.title{
-font-size:32px;
-}
-
-}
-
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<div class="container">
-
-<div class="hero-content">
-
-<div>
-
-<div class="badge">
-⭐ Avaliação Independente
-</div>
-
-<h1>
-Curso Nail Designer Funciona?
-</h1>
-
-<p>
-Analisamos o treinamento completo e mostramos o que você realmente encontra dentro da plataforma.
-</p>
-
-<a href="https://kiwify.app/Id6QFcn?afid=822s7lg6" class="btn">
-VER APRESENTAÇÃO OFICIAL
-</a>
-
-</div>
-
-<div>
-
-<img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1200" alt="Nail Designer">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<div class="container">
-
-<h2 class="title">
-O Que Encontramos no Curso
-</h2>
-
-<p class="subtitle">
-Conteúdo voltado para quem deseja aprender técnicas modernas de manicure, nail art e alongamento de unhas.
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>💅 Técnicas Profissionais</h3>
-<p>Aprenda procedimentos utilizados por profissionais da área.</p>
-</div>
-
-<div class="card">
-<h3>🎓 Aulas Online</h3>
-<p>Acesse quando quiser pelo celular ou computador.</p>
-</div>
-
-<div class="card">
-<h3>📚 Conteúdo Passo a Passo</h3>
-<p>Material organizado para facilitar o aprendizado.</p>
-</div>
-
-<div class="card">
-<h3>✨ Nail Art</h3>
-<p>Técnicas de decoração e acabamento das unhas.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<div class="container">
-
-<div class="review-box">
-
-<div class="grid-2">
-
-<div>
-
-<div class="score">4.8</div>
-
-<h3>Nota da Nossa Avaliação</h3>
-
-<p>
-O treinamento apresenta uma proposta interessante para iniciantes e profissionais que desejam ampliar conhecimentos na área de Nail Design.
-</p>
-
-</div>
-
-<div>
-
-<ul class="list">
-
-<li>Acesso online imediato</li>
-<li>Conteúdo dividido em módulos</li>
-<li>Aulas disponíveis para revisão</li>
-<li>Material focado em prática</li>
-<li>Indicado para iniciantes</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<div class="container">
-
-<h2 class="title">
-Opinião de Alunas
-</h2>
-
-<div class="testimonials">
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-
-<p>
-"Gostei da forma como as aulas são explicadas. Consegui acompanhar mesmo sem experiência anterior."
-</p>
-
-<strong>Mariana</strong>
-
-</div>
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-
-<p>
-"Consegui aprender técnicas que eu não conhecia e praticar no meu ritmo."
-</p>
-
-<strong>Juliana</strong>
-
-</div>
-
-<div class="testimonial">
-⭐⭐⭐⭐⭐
-
-<p>
-"O conteúdo é organizado e fácil de acessar pelo celular."
-</p>
-
-<strong>Fernanda</strong>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<div class="container">
-
-<h2>
-Quer Conhecer o Conteúdo Completo?
-</h2>
-
-<p style="margin-bottom:30px;font-size:20px;">
-Clique abaixo para acessar a apresentação oficial do treinamento.
-</p>
-
-<a href="https://kiwify.app/Id6QFcn?afid=822s7lg6" class="btn">
-ACESSAR AGORA
-</a>
-
-</div>
-
-</section>
-
-<div class="footer">
-Este site possui caráter informativo e representa uma análise independente. Os resultados variam conforme dedicação, prática e experiência individual.
-</div>
+    <header>
+        <h1>Você Tem Perfil para ser uma Nail Designer de Sucesso?</h1>
+        <p>Responda este teste de 4 perguntas rápidas e descubra o seu potencial de faturamento nessa carreira!</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="quiz-container">
+            
+            <div class="question active" id="q1">
+                <h2>1. Qual é o seu principal objetivo ao entrar no mercado de Nail Design?</h2>
+                <div class="options-container">
+                    <button class="option-btn" onclick="nextQuestion(1)">Ter uma renda extra para ajudar nas despesas de casa.</button>
+                    <button class="option-btn" onclick="nextQuestion(1)">Conquistar minha total independência financeira e abrir meu próprio negócio.</button>
+                    <button class="option-btn" onclick="nextQuestion(1)">Aprender apenas por hobby para fazer minhas próprias unhas.</button>
+                </div>
+            </div>
+
+            <div class="question" id="q2">
+                <h2>2. Quanto tempo por dia você tem disponível para se dedicar aos treinos e atendimentos no início?</h2>
+                <div class="options-container">
+                    <button class="option-btn" onclick="nextQuestion(2)">Menos de 1 hora por dia.</button>
+                    <button class="option-btn" onclick="nextQuestion(2)">De 1 a 3 horas por dia (consigo conciliar com outra atividade).</button>
+                    <button class="option-btn" onclick="nextQuestion(2)">Tenho disponibilidade total para focar e crescer rápido.</button>
+                </div>
+            </div>
+
+            <div class="question" id="q3">
+                <h2>3. O que você acha que é o mais importante para atrair clientes que pagam bem?</h2>
+                <div class="options-container">
+                    <button class="option-btn" onclick="nextQuestion(3)">Cobrar o preço mais barato da região.</button>
+                    <button class="option-btn" onclick="nextQuestion(3)">Ter um certificado profissional e dominar técnicas modernas de alongamento.</button>
+                    <button class="option-btn" onclick="nextQuestion(3)">Apenas postar fotos bonitas na internet, mesmo sem muita técnica.</button>
+                </div>
+            </div>
+
+            <div class="question" id="q4">
+                <h2>4. Qual o seu nível atual de conhecimento em técnicas de alongamento (Gel, Fibra, etc.)?</h2>
+                <div class="options-container">
+                    <button class="option-btn" onclick="showResult()">Iniciante do zero (nunca fiz um alongamento).</button>
+                    <button class="option-btn" onclick="showResult()">Sei o básico, mas sinto que minhas unhas descolam ou não ficam perfeitas.</button>
+                    <button class="option-btn" onclick="showResult()">Já sou profissional, mas quero me atualizar com as últimas tendências.</button>
+                </div>
+            </div>
+
+            <div id="result-section">
+                <h2>🎉 Resultado: Perfil Altamente Lucrativo Detectado!</h2>
+                <p>As suas respostas mostram que você tem a mentalidade ideal para se destacar no mercado de Nail Design. Você entende que para faturar alto, precisa de <strong>técnica profissional, posicionamento e dedicação</strong>.</p>
+                
+                <div class="cta-box">
+                    <h3>A Oportunidade Perfeita Para Você:</h3>
+                    <p style="margin-top: 10px;">Não pare apenas no teste. O mercado de unhas está pagando muito bem para quem tem a técnica certa. O curso <strong>Academia Nails Oficial</strong> vai te pegar pela mão, mesmo que esteja começando do absoluto zero.</p>
+                    
+                    <a href="https://academianailsoficial.com/nail-designer-profissional-97/" target="_blank" class="btn-purchase">
+                        Quero me Tornar uma Nail Designer Profissional!
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="benefits">
+            <div class="benefit-card">
+                <h3>Aulas 100% Online</h3>
+                <p>Assista de onde quiser, pelo celular ou computador, no seu próprio ritmo de tempo.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Certificado Incluso</h3>
+                <p>Receba seu certificado de conclusão válido para colocar no seu espaço e passar autoridade.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Técnicas Passo a Passo</h3>
+                <p>Do básico ao avançado: Fibra de Vidro, Gel Moldado, Formatos e Decorações.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Bônus de Negócios</h3>
+                <p>Aprenda como atrair suas primeiras clientes e colocar o preço certo nas suas unhas.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nail Designer Profissional. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function nextQuestion(currentNum) {
+            // Esconde a pergunta atual
+            document.getElementById('q' + currentNum).classList.remove('active');
+            // Mostra a próxima
+            document.getElementById('q' + (currentNum + 1)).classList.add('active');
+        }
+
+        function showResult() {
+            // Esconde a última pergunta
+            document.getElementById('q4').classList.remove('active');
+            // Mostra a tela de resultado/CTA
+            document.getElementById('result-section').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
